@@ -1,4 +1,4 @@
-define(["jquery"],function(){
+
 	//能点击的选择进度的进度条
 	//HTML样式写法：外面一层div，里面一层div
 	//css样式：内层div宽度设为百分比,里面一层定位为absolute，外面一层定位为relative
@@ -15,7 +15,15 @@ define(["jquery"],function(){
 	 	3、拉动更改进度条进度	（暂时没有兼容移动端）	movePregress
 	 	4、放回更改后的进度		getProgress
 	 */
-	//参数，传里面一层对象，如上面例子中progress中的div,因为是基于jQuery开发，请传jQuery对象；
+	
+(function(){
+	/*
+		//如果你使用了commonJs，那么请你把这段注释打开
+		//里面的路径你根据你电脑的情况而写
+		var $ = require("jqurey");
+	*/
+	
+	//参数，传里面一层对象，如上面例子中progress包含的div,因为是基于jQuery开发，请传jQuery对象；
 	function ProgressBar($obj){
 		this.$obj = $obj;
 		this.init();
@@ -72,6 +80,26 @@ define(["jquery"],function(){
 	ProgressBar.prototype.getProgress = function(){
 		return this.per;
 	}
-
-	return ProgressBar;
-})
+	
+	
+	
+	
+	/*下面都是模块检测，用于检测commonJs和amd和全局*/
+	if(typeof module ==="object"&& module && module.exports ==="object"){
+		module.exports = ProgressBar;
+	}else if(typeof define ==="function"&&define.amd){
+		/*
+		//如果你是使用require.js，那就把这段注释打开，把下面那段去掉，当然，你的config文档里定义jQuery的名字要和这里的一样
+		define(["jquery"],function($){
+			return ProgressBar;
+		})
+		*/
+		define([],function(){
+			return ProgressBar;
+		})
+	}
+	if(typeof window === "object" && typeof window.document === "object"){
+		window.ProgressBar = ProgressBar;
+	}
+	
+}());

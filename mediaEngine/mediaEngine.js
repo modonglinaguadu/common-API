@@ -1,5 +1,4 @@
-define(["jquery"],function($){
-	
+
 	/*多媒体引擎现提供功能有:
 	 	1、自动播放(传入音乐路径) 	autoPlay(url)
 	 	2、点击播放(传入音乐路径) 	clickPlay(url)
@@ -12,6 +11,16 @@ define(["jquery"],function($){
 	 	9、获取总时间	getDuration(cbk)   //用cbk获取总时间
 	 	10、更改播放时间（即进度）
 	 */
+	
+
+(function(){
+	/*
+		//如果你使用了commonJs，那么请你把这段注释打开
+		//里面的路径你根据你电脑的情况而写
+		var $ = require("jqurey");
+	*/
+	
+	
 	
 	//创建一个多媒体引擎构造函数
 	//调用时，传入媒体对象(本引擎基于jQuery开发，所以请传入jQuery对象)
@@ -114,5 +123,29 @@ define(["jquery"],function($){
 		})
 	}
 	
-	return Engine;
-})
+	
+	
+	
+	
+	
+	
+	/*下面都是模块检测，用于检测commonJs和amd和全局*/
+	if(typeof module ==="object"&& module && module.exports ==="object"){
+		module.exports = Engine;
+	}else if(typeof define ==="function"&&define.amd){
+		/*
+		//如果你是使用require.js，那就把这段注释打开，把下面那段去掉，当然，你的config文档里定义jQuery的名字要和这里的一样
+		define(["jquery"],function($){
+			return Engine;
+		})
+		*/
+		define([],function(){
+			return Engine;
+		})
+	}
+	if(typeof window === "object" && typeof window.document === "object"){
+		window.Engine = Engine;
+	}
+	
+	
+}());
