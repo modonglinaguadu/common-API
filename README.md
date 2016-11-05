@@ -1,5 +1,5 @@
 # common-API
-some API writed by myself
+
 有两个插件
 分别是进度条和H5媒体的二次封装
 
@@ -8,7 +8,9 @@ some API writed by myself
 		传参更改进度条进度		
 		点击更改进度条进度		
 		拉动更改进度条进度	
-		放回更改后的进度		
+		返回更改后的进度	
+
+		
 2、mediaEngine（媒体）引擎 
 	多媒体引擎现提供功能有:
 	 	自动播放(传入音乐路径) 	
