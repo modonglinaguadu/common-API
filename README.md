@@ -1,11 +1,15 @@
 # common-API
 
-有两个插件
+有4个插件
 
-分别是进度条和H5媒体的二次封装，适用amd、commonJs和全局
+以下插件适用amd、commonJs和全局
 
 1、ProgressBar（进度条）引擎 *只适应pc端*
 	
 2、mediaEngine（媒体）引擎 
+
+3、common(常用的功能封装)
+
+4、ajax（把ajax封装，适合get、post、jsonp）
 
 
